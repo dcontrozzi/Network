@@ -227,7 +227,7 @@ for n_sim in sample_size_list:
         if use_quick:
             lasso_est_cov, simulated_inv_cov = estimate_covariance(bond_changes, 'skggm', {'alpha': lasso_alpha})
         else:
-            lasso_est_cov, simulated_inv_cov = estimate_covariance(bond_changes, 'lasso', {'alpha': lasso_alpha})
+            lasso_est_cov, simulated_inv_cov = estimate_covariance(bond_changes, 'lasso', {'alpha': lasso_alpha, 'covariance_matrix_input': sample_covariance})
         dist = CovarianceMatrix.frobenius_distance(lasso_est_cov, exact_covariance)
         lasso_dist_list.append(dist)
         lasso_kk_list.append(kk_divergence_gaussian(exact_covariance, lasso_est_cov))
