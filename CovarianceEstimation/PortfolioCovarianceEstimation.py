@@ -53,10 +53,10 @@ sector_betas['Financial'] = 0.8 if beta_s > 0 else 0.
 sector_betas['Technology'] = 0.6 if beta_s > 0 else 0.
 
 x = [list(bond_betas.values()), list(issuer_betas.values()), list(sector_betas.values())]
-plt.hist(x, 30, density=True, label=['Level 1', 'Leval 2', 'Level 3'], histtype='bar')
-plt.legend()
-plt.savefig(f'betas_{beta_b}_{beta_i}_{beta_s}.png')
-plt.show()
+# plt.hist(x, 30, density=True, label=['Level 1', 'Leval 2', 'Level 3'], histtype='bar')
+# plt.legend()
+# plt.savefig(f'betas_{beta_b}_{beta_i}_{beta_s}.png')
+# plt.show()
 
 print('sector_betas', sector_betas)
 
@@ -73,10 +73,10 @@ sector_std = {b: max(0, np.random.normal(1., 0.2)) for b in sectors_list}
 # sector_std = {b: 5. for b in sectors_list}
 
 x = [list(bond_std.values()), list(issuer_std.values()), list(sector_std.values())]
-plt.hist(x, 30, density=True, label=['Level 1', 'Leval 2', 'Level 3'], histtype='bar')
-plt.legend()
-plt.savefig('sigma.png')
-plt.show()
+# plt.hist(x, 30, density=True, label=['Level 1', 'Leval 2', 'Level 3'], histtype='bar')
+# plt.legend()
+# plt.savefig('sigma.png')
+# plt.show()
 
 S0 = 100.
 mu = 102.
