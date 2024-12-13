@@ -1,0 +1,32 @@
+o
+
+bond_betas = {b: np.random.normal(1., 0.2) for b in bonds_df['isin']}
+issuer_betas = {b: np.random.normal(0.8, 0.2) for b in issuers_list}
+sector_betas = {b: np.random.normal(0., 0.1) for b in sectors_list}
+
+1
+
+bond_betas = {b: np.random.normal(1., 0.2) for b in bonds_df['isin']}
+issuer_betas = {b: np.random.normal(0., 0.1) for b in issuers_list}
+sector_betas = {b: np.random.normal(0., 0.1) for b in sectors_list}
+
+2
+
+bond_betas = {b: np.random.normal(1., 0.2) for b in bonds_df['isin']}
+issuer_betas = {b: np.random.normal(0.8, 0.1) for b in issuers_list}
+sector_betas = {b: np.random.normal(0.6, 0.1) for b in sectors_list}
+
+3
+
+bond_betas = {b: 0. for b in bonds_df['isin']}
+issuer_betas = {b: 0. for b in issuers_list}
+sector_betas = {b: 0. for b in sectors_list}
+
+
+
+sparsity net 2 2.684633273483099 0.54
+18 dist net2  0.4603420711904963
+18 inv dist net2  0.3401615895214282
+/Users/davidecontrozzi/PycharmProjects/Networks/venv/lib/python3.10/site-packages/fast_tmfg/utils.py:22: FutureWarning: The behavior of `series[i:j]` with an integer-dtype index is deprecated. In a future version, this will be treated as *label-based* indexing, consistent with e.g. `series[i]` lookups. To retain the old behavior, use `series.iloc[i:j]`. To get the future behavior, use `series.loc[i:j]`.
+  return sorted_v[:4]
+sparsity net 2 1.9040593013809959 0.67
