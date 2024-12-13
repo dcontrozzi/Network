@@ -111,7 +111,7 @@ kk_divergence_df = pd.DataFrame(columns=['n_sim', 'Sample', 'Lasso', 'Ridge', 'O
 kk_divergence_std_df = pd.DataFrame(columns=['n_sim', 'Sample', 'Lasso', 'Ridge', 'OAS', 'TMFG', 'MFCF_8', 'MFCF_20', 'MST'])
 
 # Calibrate lasso alpha
-use_quick = True
+use_quick = False
 # print('lasso cal start')
 # single_simulation_N = 100
 # lasso_data = portfolio_ts.simulate(single_simulation_N, single_simulation_N)
