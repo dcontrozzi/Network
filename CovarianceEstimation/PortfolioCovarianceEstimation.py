@@ -183,43 +183,43 @@ for n_sim in sample_size_list:
         begin = time.time()
 
         # Graphs
-        filename = f'./pre_calculated_network_matrices/J_MFCF_8_ridge_large_{n_sim}_{beta_b}_{beta_i}_{beta_s}.csv'
-        J_MFCF_8_inv = pd.read_csv(filename)
-        del J_MFCF_8_inv['Unnamed: 0']
-        J_MFCF_8 = np.linalg.inv(J_MFCF_8_inv)
-        dist_J_MFCF_8 = CovarianceMatrix.frobenius_distance(J_MFCF_8, exact_covariance)
-        J_MFCF_8_dist_list.append(dist_J_MFCF_8)
-        J_MFCF_8_kk_list.append(kk_divergence_gaussian(exact_covariance, J_MFCF_8))
-
-        filename = f'./pre_calculated_network_matrices/J_MFCF_20_ridge_large_{n_sim}_{beta_b}_{beta_i}_{beta_s}.csv'
-        J_MFCF_20_inv = pd.read_csv(filename)
-        del J_MFCF_20_inv['Unnamed: 0']
-        J_MFCF_20 = np.linalg.inv(J_MFCF_20_inv)
-        dist_J_MFCF_20 = CovarianceMatrix.frobenius_distance(J_MFCF_20, exact_covariance)
-        J_MFCF_20_dist_list.append(dist_J_MFCF_20)
-        J_MFCF_20_kk_list.append(kk_divergence_gaussian(exact_covariance, J_MFCF_20))
-
-        filename = f'./pre_calculated_network_matrices/J_MST_ridge_large_{n_sim}_{beta_b}_{beta_i}_{beta_s}.csv'
-        J_MST_inv = pd.read_csv(filename)
-        del J_MST_inv['Unnamed: 0']
-        J_MST = np.linalg.inv(J_MST_inv)
-        dist_J_MST = CovarianceMatrix.frobenius_distance(J_MST, exact_covariance)
-        J_MST_dist_list.append(dist_J_MST)
-        J_MST_kk_list.append(kk_divergence_gaussian(exact_covariance, J_MST))
-
-        end = time.time()
-        print(f"graphs: Total runtime of the program is {end - begin}")
-        begin = time.time()
-
-        # Ridge
-        ridgr_est_cov, simulated_inv_cov = estimate_covariance(pd.DataFrame(bond_changes).to_numpy(), 'ridge')
-        dist = CovarianceMatrix.frobenius_distance(ridgr_est_cov, exact_covariance)
-        ridge_dist_list.append(dist)
-        ridge_kk_list.append(kk_divergence_gaussian(exact_covariance, ridgr_est_cov))
-
-        end = time.time()
-        print(f"ridge: Total runtime of the program is {end - begin}")
-        begin = time.time()
+        # filename = f'./pre_calculated_network_matrices/J_MFCF_8_ridge_large_{n_sim}_{beta_b}_{beta_i}_{beta_s}.csv'
+        # J_MFCF_8_inv = pd.read_csv(filename)
+        # del J_MFCF_8_inv['Unnamed: 0']
+        # J_MFCF_8 = np.linalg.inv(J_MFCF_8_inv)
+        # dist_J_MFCF_8 = CovarianceMatrix.frobenius_distance(J_MFCF_8, exact_covariance)
+        # J_MFCF_8_dist_list.append(dist_J_MFCF_8)
+        # J_MFCF_8_kk_list.append(kk_divergence_gaussian(exact_covariance, J_MFCF_8))
+        #
+        # filename = f'./pre_calculated_network_matrices/J_MFCF_20_ridge_large_{n_sim}_{beta_b}_{beta_i}_{beta_s}.csv'
+        # J_MFCF_20_inv = pd.read_csv(filename)
+        # del J_MFCF_20_inv['Unnamed: 0']
+        # J_MFCF_20 = np.linalg.inv(J_MFCF_20_inv)
+        # dist_J_MFCF_20 = CovarianceMatrix.frobenius_distance(J_MFCF_20, exact_covariance)
+        # J_MFCF_20_dist_list.append(dist_J_MFCF_20)
+        # J_MFCF_20_kk_list.append(kk_divergence_gaussian(exact_covariance, J_MFCF_20))
+        #
+        # filename = f'./pre_calculated_network_matrices/J_MST_ridge_large_{n_sim}_{beta_b}_{beta_i}_{beta_s}.csv'
+        # J_MST_inv = pd.read_csv(filename)
+        # del J_MST_inv['Unnamed: 0']
+        # J_MST = np.linalg.inv(J_MST_inv)
+        # dist_J_MST = CovarianceMatrix.frobenius_distance(J_MST, exact_covariance)
+        # J_MST_dist_list.append(dist_J_MST)
+        # J_MST_kk_list.append(kk_divergence_gaussian(exact_covariance, J_MST))
+        #
+        # end = time.time()
+        # print(f"graphs: Total runtime of the program is {end - begin}")
+        # begin = time.time()
+        #
+        # # Ridge
+        # ridgr_est_cov, simulated_inv_cov = estimate_covariance(pd.DataFrame(bond_changes).to_numpy(), 'ridge')
+        # dist = CovarianceMatrix.frobenius_distance(ridgr_est_cov, exact_covariance)
+        # ridge_dist_list.append(dist)
+        # ridge_kk_list.append(kk_divergence_gaussian(exact_covariance, ridgr_est_cov))
+        #
+        # end = time.time()
+        # print(f"ridge: Total runtime of the program is {end - begin}")
+        # begin = time.time()
 
         # pd.DataFrame(ridgr_est_cov).to_csv(f'ridge_large_{n_sim}_{beta_b}_{beta_i}_{beta_s}.csv')
 
