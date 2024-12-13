@@ -112,14 +112,14 @@ kk_divergence_std_df = pd.DataFrame(columns=['n_sim', 'Sample', 'Lasso', 'Ridge'
 
 # Calibrate lasso alpha
 use_quick = False
-print('lasso cal start')
-single_simulation_N = 100
-lasso_data = portfolio_ts.simulate(single_simulation_N, single_simulation_N)
-lasso_data_df = pd.DataFrame(lasso_data)
-lasso_data_np = lasso_data_df.to_numpy()[:, :100]
-lasso_alpha, fitted_lasso = calibrate_lasso(lasso_data_np, use_quick=use_quick)
-print(lasso_alpha)
-# lasso_alpha = 0.33113112148259105
+# print('lasso cal start')
+# single_simulation_N = 100
+# lasso_data = portfolio_ts.simulate(single_simulation_N, single_simulation_N)
+# lasso_data_df = pd.DataFrame(lasso_data)
+# lasso_data_np = lasso_data_df.to_numpy()[:, :100]
+# lasso_alpha, fitted_lasso = calibrate_lasso(lasso_data_np, use_quick=use_quick)
+# print(lasso_alpha)
+lasso_alpha = 8.0
 
 # sample_size_list = [50]
 sample_size_list = [10, 50, 100, 500]
@@ -211,15 +211,15 @@ for n_sim in sample_size_list:
         # print(f"graphs: Total runtime of the program is {end - begin}")
         # begin = time.time()
         #
-        # # Ridge
-        # ridgr_est_cov, simulated_inv_cov = estimate_covariance(pd.DataFrame(bond_changes).to_numpy(), 'ridge')
-        # dist = CovarianceMatrix.frobenius_distance(ridgr_est_cov, exact_covariance)
-        # ridge_dist_list.append(dist)
-        # ridge_kk_list.append(kk_divergence_gaussian(exact_covariance, ridgr_est_cov))
-        #
-        # end = time.time()
-        # print(f"ridge: Total runtime of the program is {end - begin}")
-        # begin = time.time()
+        # Ridge
+        ridgr_est_cov, simulated_inv_cov = estimate_covariance(pd.DataFrame(bond_changes).to_numpy(), 'ridge')
+        dist = CovarianceMatrix.frobenius_distance(ridgr_est_cov, exact_covariance)
+        ridge_dist_list.append(dist)
+        ridge_kk_list.append(kk_divergence_gaussian(exact_covariance, ridgr_est_cov))
+
+        end = time.time()
+        print(f"ridge: Total runtime of the program is {end - begin}")
+        begin = time.time()
 
         # pd.DataFrame(ridgr_est_cov).to_csv(f'ridge_large_{n_sim}_{beta_b}_{beta_i}_{beta_s}.csv')
 
@@ -227,7 +227,7 @@ for n_sim in sample_size_list:
         if use_quick:
             lasso_est_cov, simulated_inv_cov = estimate_covariance(bond_changes, 'skggm', {'alpha': lasso_alpha})
         else:
-            lasso_est_cov, simulated_inv_cov = estimate_covariance(bond_changes, 'lasso', {'alpha': lasso_alpha, 'covariance_matrix_input': sample_covariance})
+            lasso_est_cov, simulated_inv_cov = estimate_covariance(bond_changes, 'lasso', {'alpha': lasso_alpha, 'cov': ridgr_est_cov})
         dist = CovarianceMatrix.frobenius_distance(lasso_est_cov, exact_covariance)
         lasso_dist_list.append(dist)
         lasso_kk_list.append(kk_divergence_gaussian(exact_covariance, lasso_est_cov))
