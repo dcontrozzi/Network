@@ -112,14 +112,14 @@ kk_divergence_std_df = pd.DataFrame(columns=['n_sim', 'Sample', 'Lasso', 'Ridge'
 
 # Calibrate lasso alpha
 use_quick = False
-# print('lasso cal start')
-# single_simulation_N = 100
-# lasso_data = portfolio_ts.simulate(single_simulation_N, single_simulation_N)
-# lasso_data_df = pd.DataFrame(lasso_data)
-# lasso_data_np = lasso_data_df.to_numpy()[:, :100]
-# lasso_alpha, fitted_lasso = calibrate_lasso(lasso_data_np, use_quick=use_quick)
-# print(lasso_alpha)
-lasso_alpha = 0.33113112148259105
+print('lasso cal start')
+single_simulation_N = 100
+lasso_data = portfolio_ts.simulate(single_simulation_N, single_simulation_N)
+lasso_data_df = pd.DataFrame(lasso_data)
+lasso_data_np = lasso_data_df.to_numpy()[:, :100]
+lasso_alpha, fitted_lasso = calibrate_lasso(lasso_data_np, use_quick=use_quick)
+print(lasso_alpha)
+# lasso_alpha = 0.33113112148259105
 
 # sample_size_list = [50]
 sample_size_list = [10, 50, 100, 500]
